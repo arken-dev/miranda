@@ -8,16 +8,22 @@
 #
 # ------------------------------------------------------------------------------
 
-cmake_minimum_required(VERSION 2.8)
+include_directories(.)
+include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/deps/include)
+include_directories(${PROJECT_SOURCE_DIR}/src/lua/json)
 
-set(CXX_FLAGS
-    -g
-    -Wall
-    -std=c++11
-    -D_PTHREADS
-    -Wno-unused-parameter
-    -O2
-    -finline-functions
+add_executable(
+    miranda
+    main.cpp
+    mirandaserver.cpp
+    mirandatask.cpp
+    mirandaserver.h
+    mirandatask.h
 )
 
-add_subdirectory(src)
+find_package(Qt5Core)
+find_package(Qt5Network)
+
+target_link_libraries( miranda Qt5::Core lua charon curl json )
+target_link_libraries( miranda Qt5::Network )
