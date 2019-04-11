@@ -26,9 +26,14 @@ void MirandaTask::run()
 
   // socket
   socket.setSocketDescriptor(m_descriptor);
+  socket.waitForReadyRead(-1);
 
-  if ( socket.waitForReadyRead(-1) ) {
+  if ( socket.bytesAvailable() < 4096 ) {
     buffer.append(socket.readAll());
+  } else {
+    while( socket.waitForReadyRead(100) ) {
+      buffer.append(socket.readAll());
+    }
   }
 
   // Process Request
