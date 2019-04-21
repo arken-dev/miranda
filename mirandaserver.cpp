@@ -12,33 +12,18 @@
 
 using charon::service;
 using charon::Log;
+using charon::net::Config;
 
 MirandaServer::MirandaServer(QCoreApplication *app)
 {
-
-  QFile config("config/miranda.json");
-  if( config.exists() ) {
-    config.open(QIODevice::ReadOnly);
-    QJsonParseError * error = new QJsonParseError();
-    QJsonDocument json = QJsonDocument::fromJson(config.readAll(), error);
-    if( error->error != 0 ) {
-      qDebug() << error->errorString();
-      throw;
-    }
-    QJsonObject object = json.object();
-    m_port           = object.value("port").toInt();
-    m_address        = object.value("address").toString();
-    m_maxThreadCount = object.value("threads").toInt();
-    m_pid            = object.value("pid").toString();
-    m_service        = object.value("service").toBool();
-  } else {
-    qDebug() << "config/miranda.json file not exists";
-    m_port           = 2345;
-    m_address        = "localhost";
-    m_maxThreadCount = 15;
-    m_pid            = "miranda.pid";
-    m_service        = true;
-  }
+  Config config("config/miranda.json");
+  std::cout << "start miranda " << config.address() << ":" << config.port() <<
+    " (" << config.threads() << ") threads..." << std::endl;
+  m_address        = config.address().c_str();
+  m_pid            = config.pid().c_str();
+  m_port           = config.port();
+  m_maxThreadCount = config.threads();
+  m_service        = config.service();
 
   QFileInfo dispatch = QFileInfo("dispatch.lua");
 
@@ -85,9 +70,7 @@ void MirandaServer::start()
   m_pool = new QThreadPool(this);
   m_pool->setMaxThreadCount(m_maxThreadCount);
 
-  if(this->listen(QHostAddress(m_address), m_port)) {
-    qDebug() << QString("start miranda %1:%2 (%3) threads...").arg(m_address).arg(m_port).arg(m_maxThreadCount).toLocal8Bit().data();
-  } else {
+  if(! this->listen(QHostAddress(m_address), m_port)) {
     qDebug() << "fail start miranda ...";
     throw;
   }
