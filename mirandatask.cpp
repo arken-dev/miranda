@@ -31,7 +31,7 @@ void MirandaTask::run()
     buffer.append(socket.readAll());
   } else {
     buffer.append(socket.readAll());
-    while( socket.waitForReadyRead(100) ) {
+    while( socket.waitForReadyRead(250) ) {
       buffer.append(socket.readAll());
     }
   }
