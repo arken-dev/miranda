@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
 #
-# Copyright 2016 The Charon Platform Authors.
+# Copyright 2016 The Arken Platform Authors.
 #
 # All rights reserved.
 # Use of this source code is governed by a BSD-style
@@ -24,6 +24,8 @@ add_executable(
 
 find_package(Qt5Core)
 find_package(Qt5Network)
+find_package(Qt5Widgets)
+find_package(Qt5Gui)
 
-target_link_libraries( miranda Qt5::Core lua charon curl json )
+target_link_libraries( miranda Qt5::Core lua arken curl json )
 target_link_libraries( miranda Qt5::Network )

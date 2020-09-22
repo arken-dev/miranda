@@ -1,14 +1,14 @@
-// Copyright 2016 The Charon Platform Authors.
+// Copyright 2016 The Arken Platform Authors.
 // All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
 #include <lua/lua.hpp>
-#include <charon/base>
+#include <arken/base>
 #include <mirandatask.h>
 #include <QTcpSocket>
 
-using charon::net::HttpHandle;
+using arken::net::HttpHandle;
 
 MirandaTask::MirandaTask(qintptr descriptor)
 {

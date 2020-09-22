@@ -1,16 +1,16 @@
-// Copyright 2016 The Charon Platform Authors.
+// Copyright 2016 The Arken Platform Authors.
 // All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
 #include <mirandaserver.h>
 #include <mirandatask.h>
-#include <charon/base>
+#include <arken/base>
 #include <QDebug>
 #include <QFile>
 #include <QJsonObject>
 
-using charon::net::Config;
+using arken::net::Config;
 
 MirandaServer::MirandaServer(QCoreApplication *app)
 {
@@ -21,8 +21,6 @@ MirandaServer::MirandaServer(QCoreApplication *app)
   m_pid            = config.pid().c_str();
   m_port           = config.port();
   m_maxThreadCount = config.threads();
-
-
 }
 
 void MirandaServer::start()

@@ -6,8 +6,8 @@ Web server async multithreading based on Linux api.
 
 - clone in package directory
 ```
-cd charonplatform
-git clone git@github.com:charonplatform/titan.git packages/titan
+cd arkenplatform
+git clone git@github.com:arkenplatform/titan.git packages/titan
 Cloning into 'packages/miranda'...
 remote: Enumerating objects: 30, done.
 remote: Counting objects: 100% (30/30), done.
@@ -26,15 +26,15 @@ cd build
 cmake ..
 make -j4 (4 is number of cores)
 
-CHARON BACKEND embedded
-CHARON BASE64 embedded
-CHARON DIGEST embedded
-CHARON MVM CONTAINER deque-stack
+ARKEN BACKEND embedded
+ARKEN BASE64 embedded
+ARKEN DIGEST embedded
+ARKEN MVM CONTAINER deque-stack
 etc, etc
 PACKAGE: titan
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/ariveira/projetos/charon/build
+-- Build files have been written to: /home/ariveira/projetos/arken/build
 
 Building CXX object packages/miranda/CMakeFiles/titan.dir/src/main.cpp.o
 Linking CXX executable ../../../bin/titan

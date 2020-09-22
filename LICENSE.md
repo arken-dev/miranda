@@ -1,6 +1,6 @@
 -------------------------------------------------------------------- 
 Copyright (c) 2018 Lin Ya (xxbbb@vip.qq.com).
-Copyright (c) 2019 Charon Platform Team All rights reserved.
+Copyright (c) 2019 Arken Platform Team All rights reserved.
 -------------------------------------------------------------------- 
 
 Redistribution and use in source and binary forms, with or without
@@ -15,7 +15,7 @@ met:
      disclaimer in the documentation and/or other materials provided
      with the distribution.
  
-  3. Neither the name of Charon Platform nor the names of its
+  3. Neither the name of Arken Platform nor the names of its
      contributors may be used to endorse or promote products derived from
      this software without specific prior written permission.
 
