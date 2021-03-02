@@ -3,10 +3,11 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+#include <QTcpSocket>
 #include <lua/lua.hpp>
 #include <arken/base>
+#include <arken/net/httphandle.h>
 #include <mirandatask.h>
-#include <QTcpSocket>
 
 using arken::net::HttpHandle;
 
