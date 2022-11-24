@@ -10,12 +10,13 @@
 #include <mirandaserver.h>
 #include <mirandatask.h>
 #include <arken/base>
-#include <arken/net/config.h>
+//#include <arken/net/config.h>
 
-using arken::net::Config;
+//using arken::net::Config;
 
 MirandaServer::MirandaServer(QCoreApplication *app)
 {
+  /*
   Config config("config/miranda.json");
   std::cout << "start miranda " << config.address() << ":" << config.port() <<
     " (" << config.threads() << ") threads..." << std::endl;
@@ -23,18 +24,19 @@ MirandaServer::MirandaServer(QCoreApplication *app)
   m_pid            = config.pid().c_str();
   m_port           = config.port();
   m_maxThreadCount = config.threads();
+  */
 }
 
 void MirandaServer::start()
 {
   m_pool = new QThreadPool(this);
-  m_pool->setMaxThreadCount(m_maxThreadCount);
+  m_pool->setMaxThreadCount(25);
 
-  if(! this->listen(QHostAddress(m_address), m_port)) {
+  if(! this->listen(QHostAddress("127.0.0.1"), 2345)) {
     qDebug() << "fail start miranda ...";
     throw;
   }
-  QFile log(m_pid);
+  QFile log("logs/miranda.log");
   if ( log.open(QIODevice::WriteOnly) ) {
     log.write(QByteArray::number((qint64) os::pid()));
     log.close();

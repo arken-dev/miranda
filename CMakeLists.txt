@@ -27,5 +27,5 @@ find_package(Qt5Network)
 find_package(Qt5Widgets)
 find_package(Qt5Gui)
 
-target_link_libraries( miranda Qt5::Core lua arken curl json )
-target_link_libraries( miranda Qt5::Network )
+target_link_libraries( miranda arken )
+target_link_libraries( miranda Qt5::Core Qt5::Network )

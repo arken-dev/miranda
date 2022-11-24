@@ -8,7 +8,7 @@
 #include <QCoreApplication>
 #include "mirandaserver.h"
 #include <arken/base>
-#include <arken/mvm>
+#include <arken/mvm.h>
 
 using arken::mvm;
 
