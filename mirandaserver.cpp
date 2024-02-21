@@ -46,7 +46,7 @@ void MirandaServer::setThreads(int threads)
 void MirandaServer::start()
 {
   m_pool = new QThreadPool(this);
-  m_pool->setMaxThreadCount(m_threads);
+  m_pool->setMaxThreadCount(m_maxThreadCount);
 
   if(! this->listen(QHostAddress(m_address), m_port)) {
     qDebug() << "fail start miranda ...";
