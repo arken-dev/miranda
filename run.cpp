@@ -22,8 +22,10 @@ void HttpServer::run()
 
    QCoreApplication *app = new QCoreApplication(mvm::s_argc, mvm::s_argv);
    MirandaServer server(app);
+   server.setPort(m_port);
+   server.setAddress(m_address.data());
+   server.setThreads(m_threads);
    server.start();
-
 
    app->exec();
 }
