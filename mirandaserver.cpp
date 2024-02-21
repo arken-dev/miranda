@@ -27,6 +27,22 @@ MirandaServer::MirandaServer(QCoreApplication *app)
   */
 }
 
+
+void MirandaServer::setPort(quint16  port)
+{
+  m_port = port;
+}
+
+void MirandaServer::setAddress(QString address)
+{
+  m_address = address;
+}
+
+void MirandaServer::setThreads(int threads)
+{
+  m_maxThreadCount = threads;
+}
+
 void MirandaServer::start()
 {
   m_pool = new QThreadPool(this);
