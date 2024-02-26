@@ -17,6 +17,9 @@ public:
   explicit MirandaServer(QCoreApplication *app);
   void incomingConnection(qintptr descriptor);
   void start();
+  void setPort(quint16  port);
+  void setAddress(QString m_address);
+  void setThreads(int threads);
 
 private:
   QThreadPool * m_pool;
@@ -24,7 +27,6 @@ private:
   QString       m_address;
   QString       m_pid;
   int           m_maxThreadCount;
-  bool          m_service;
 
 };
 

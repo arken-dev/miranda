@@ -27,21 +27,29 @@ MirandaServer::MirandaServer(QCoreApplication *app)
   */
 }
 
+
+void MirandaServer::setPort(quint16  port)
+{
+  m_port = port;
+}
+
+void MirandaServer::setAddress(QString address)
+{
+  m_address = address;
+}
+
+void MirandaServer::setThreads(int threads)
+{
+  m_maxThreadCount = threads;
+}
+
 void MirandaServer::start()
 {
   m_pool = new QThreadPool(this);
-  m_pool->setMaxThreadCount(25);
+  m_pool->setMaxThreadCount(m_maxThreadCount);
 
-  if(! this->listen(QHostAddress("127.0.0.1"), 2345)) {
-    qDebug() << "fail start miranda ...";
-    throw;
-  }
-  QFile log("logs/miranda.log");
-  if ( log.open(QIODevice::WriteOnly) ) {
-    log.write(QByteArray::number((qint64) os::pid()));
-    log.close();
-  } else {
-    qDebug() << m_pid << " not open";
+  if(! this->listen(QHostAddress(m_address), m_port)) {
+    qDebug() << "fail start miranda ... address " << m_address << " port " << m_port;
     throw;
   }
 }
